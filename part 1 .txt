@@ -1,0 +1,128 @@
+JS is for the Behaviour.
+-----INTRODUCTION OF JS------------
+1- alert("hello");
+2- typeof(24);// it gives the datatype of th given data.
+3- var myname = "aditi" ;// this is a javascript variable
+ myname.length; // this count the length of the string.
+4- alert("my name is" + "aditi")// + is use to concat the string 
+5- prompt("what is your name?");
+
+6- var var = 10; // this is not allowed in js we cannot use reserved keywrd name as a variable name.
+7- var name = "Aditi";
+name.slice(0,3); // output=Adi // the 0 is the the starting index and 3 is the index before which u have to slice the string.
+name.toUpperCase();// output="ADITI" // this is use to convert the string in uppercase.
+name.toLowerCase();//output="aditi" // this is use to convert the string in lowercase.
+8- function myfun(){
+    //creating a function
+}
+myfun(); //calling a function
+9- use camelCase to name a variable or function
+10- Math.floor(3.333356) // o/p=3 //it will give the floor value
+11- function myfun(){
+    return a;  // return something from function
+}
+var store = myfun(); //in the store variable the return element of myfun function is saved.
+12- Math.pow(base,exponent); // this is use to calculate power 
+eg= Math.pow(2,4); // this will give 2^4 
+13- Math.round(2.6); // o/p=3 // it will round off the value 
+//----------INTERMEDIATE JS--------------
+1- Random number generation:
+var n = Math.random(); // this generate a random no. which is floating point no. and this random no. is in b/w 0.0 to 0.9999999999999999 . it never reaches 1.
+the random number generated is 16 decimal place number .
+if we want the no. b/w range 1 and 6 then we :
+var n = n * 6
+var n = Math.floor(n*6)+1; // this generate a no. blw 1 and 6 like in dice.
+2- var a = 1;
+var b = "1";
+then :
+ a===b is false but a==b is true because === checks equality as well as datatype are matching but == checks only equality.
+3- &&=both
+   ||= either of 1
+   ! = not
+4- var number = [1,2,3,4,5]  //array
+number.includes(6); // o/p=false // this only give output in boolean form and this includes function check if the element is present in array or not.
+number.push(6); // this will add 6 in the array. it always pushes the value in the end of the array.
+number.pop(); // it will remove the last element of the array.
+//------------------DOM------------------
+1- we can write javascript in three ways:
+a) INLINE JS : <body onload = "alert('hello');"> //onload is a keywrd used to write inline js ..
+b) INTERNAL JS : <script> alert("hello"); </script> // INTERNAL js is written inside script tag ..
+c) EXTERNAL JS : <script src="index.js"></script> // this EXTERNAL js is written at last before closing body tag(</body>) 
+2- Before DOM(Document object model) we have to wait for user to change something (like click button) to change the page or do something on it,
+but this problem is solved by DOM as it convert the html code in a tree structure i.e it catalogs the web page into individual objects that we can select & manipulate .
+conversion of html file into DOM is done by browser when you load up the web page.
+3- if we want to select an element and manipulate it then we do this by:
+document.getElementByTagName("h1"); // this line give an array so if we want to manipulate this then we have to write:- document.getElementByTagName("h1")[1].style.color="red";
+document.getElementByClassName("btn");// this also gives an array as we can have more then one class name in a file so if we want to manipulate this then we have to write:- document.getElementByClassName("btn")[0].style.color="red";
+document.getElementById("row"); // this will give only one element as id is unique so if we want to manipulate this then we have to write:- document.getElementById("row").style.color="red";
+document.querySelector("h1"); // this gives only one element // In this querySelector() we can write a tag name ,class or id for this we can write:document.querySelector("#row") or document.querySelector(".btn") and so if we want to manipulate this then we have to write:- document.querySelector(".btn").style.color="red"; // in this querySelector we can combine selectors also like document.querySelector("#row a");
+document.querySelectorAll("h1")[0]; // this will select all the h1 tag present in html but if we use [0] then it select the particular one
+we can see more in DOM_manipulation.png
+4- if we want to change any element's style in js then all the css is written in camelCase and if u want to add values in js then it should be in "" eg=document.querySelector("h1").style.fontSize="10rem";
+5- if we want to see the class property for any element remove and add other class to that element then we can do this by:
+document.querySelector("h1").classList;// this will show all the class present in that element.
+document.querySelector("h1").classList.add("col"); // this will add class col to the h1.
+document.querySelector("h1").classList.remove("col"); // this will remove class col to the h1.
+document.querySelector("h1").classList.toggle("col"); // this will apply col if not applied in h1 and viceversa.
+6- DOM is used to debug our code easily.
+7- document.querySelector("h1").innerHTML="good bye"; // this will change the inner html of the h1 tag to googbye.
+8- document.querySelector("h1").textContent="good bye";// this will change the content of the given tag to goodbye.
+9- the diff b/w innerHTML & textContent is :
+eg= <h1><strong>hello</strong></h1>
+if we write : document.querySelector("h1").innerHTML; then o/p will come :-<strong>hello</strong> 
+but if we write : document.querySelector("h1").textContent; then o/p will come :- hello
+10- manipulate attributes of an element:-
+document.querySelector("h1").attributes; // this will give al the attributes present in h1 tag.
+document.querySelector("a").getAttribute("href"); // this will give the value of href present in anchor tag.
+document.querySelector("a").setAttribute("href","www.google.com"); // this will set the value of href present in anchor tag to the given link.
+
+//-----------------------Advanced Javascript-----------------------
+1- if we want to add any event then we use: addEventListener(type,listener)
+for eg : document.querySelectorAll("button")[0].addEventListener("click",handleclick function); // it will add a event when click and perform a handleclick function.
+To get the identity of the button that triggered we use "this":
+for eg : document.querySelectorAll("button")[0].addEventListener("click",function(){
+    console.log("this"); // this will print the triggered button which is clicked.
+});
+if we want to press keyboard key instead of clicking thorugh mouse we can write:
+for eg : document.addEventListener("keypress",function(){
+    alert("key was pressed");
+    console.log("event"); // this weill print the pressed key details .
+    console.log(event.key);// this weill print which key is pressed. 
+});
+
+
+2- DOM uses higher order function and passing function as argument:
+for eg : function calculator(num1,mum2,operator) // in this operator is a function like add,sub which is defined in program
+        {
+            return operator(num1,num2);
+        }
+3- if we want to play Audio in JS then :
+var audio = new Audio("sounds/tom-1.mp3");
+      audio.play();
+
+4- we have a special function called constructor function in javascript:
+function BellBoy (name,age,workExperience){
+    this.name =name;
+    this.age =age;
+    this.workExperience = workExperience;
+    this.moveSuitcase = function(){                                  // constructor function can have a method too.
+        alert("may i take your Suitcase?)
+        pickupthesuitcase();
+        move();
+    }
+} // in this constructor function the name is always be in capital rather than camelCase and this function takes a no. of input that we are going to provide when we create new objects from this constructor function
+How we initialize an object :
+var bellBoy1 = new BellBoy ("Tom",19,"2 years"); // using this we can create as many object as we can using this .
+
+5- set timeout function in JS:
+setTimeOut(function,milliseconds); // in this which function we have to perform is written at what time is written in milliseconds.
+
+
+
+
+
+
+
+
+
+
